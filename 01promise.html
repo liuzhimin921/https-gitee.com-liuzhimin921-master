@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function getNum2(fn) {
+        // var num = 0;
+        setTimeout(function() {
+            var num = 6;
+            fn(num);
+        }, 1000)
+
+    }
+
+    function getNum4(fn) {
+        // var num = 0;
+        setTimeout(function() {
+            var num = 8;
+            fn(num);
+        }, 2000)
+
+    }
+
+    function getNum6(fn) {
+        // var num = 0;
+        setTimeout(function() {
+            var num = 10;
+            fn(num);
+        }, 3000)
+
+    }
+
+    getNum2(function(result) {
+        alert(result);
+        getNum4(function(result) {
+            alert(result);
+            getNum6(function(result) {
+                alert(result);
+            });
+        });
+    });
+    //地狱回调
+</script>
+
+</html>
