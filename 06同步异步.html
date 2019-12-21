@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//同步  异步
+//     for(let   i=0;i<=5;i++){
+//         setTimeout(function(){
+//         alert(i);
+//     },1000);
+// say();
+function say(){
+    var  p = new Promise(function(resolve,reject){
+        setTimeout(()=>{
+            resolve("一秒得到的结果");
+        },1000);
+    }); 
+    return  p;
+}
+
+function say2(){
+    var  p = new Promise(function(resolve,reject){
+        setTimeout(()=>{
+            resolve("二秒得到的结果");
+        },2000);
+    }); 
+    return  p;
+}
+function say3(){
+    var  p = new Promise(function(resolve,reject){
+        setTimeout(()=>{
+            resolve("三秒得到的结果");
+        },3000);
+    }); 
+    return  p;
+}
+say().then(function(result){
+    console.log(result);
+    return  say2();
+}).then(function(result){
+    console.log(result);
+    return say3()
+}).then(function(result){
+    console.log(result);
+})
+
+Promise.all([say(),say2(),say3()]).then(function(result){
+    console.log(result);
+})
+
+Promise.race([say(),say2(),say3()]).then(function(result){
+    console.log("最快的结果为:"+result);
+})
+
+
+//并发: 事物+锁
+
+// say().then(function(result){    
+//     alert(result);
+// }).catch(function(result){
+//     alert("错误的数据为:"+result);
+// })
+
+
+// alert("b");
+
+
+</script>
+</html>
